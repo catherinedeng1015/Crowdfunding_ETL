@@ -39,7 +39,7 @@ CREATE TABLE campaign (
     backers_count INT,              -- Number of backers supporting the campaign
     country VARCHAR(50),            -- Country where the campaign was launched
     currency VARCHAR(10),           -- Currency used for fundraising
-    launched_date DATE,             -- Date when the campaign was launched
+    launch_date DATE,               -- Date when the campaign was launched
     end_date DATE,                  -- Date when the campaign ended
     category_id VARCHAR(10),        -- Foreign key linking to the Category table
     subcategory_id VARCHAR(10),     -- Foreign key linking to the Subcategory table,
