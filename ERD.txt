@@ -1,0 +1,33 @@
+category
+-
+  category_id      VARCHAR(10) PK         # Unique identifier for categories 
+  category         VARCHAR(255)           # Category name 
+
+subcategory
+-
+  subcategory_id   VARCHAR(10) PK         # Unique identifier for subcategories 
+  subcategory      VARCHAR(255)           # Subcategory name 
+
+contacts
+-
+  contact_id       SERIAL PK              # Unique contact ID 
+  first_name       VARCHAR(100)           # First name of the contact person
+  last_name        VARCHAR(100)           # Last name of the contact person
+  email           VARCHAR(255) UNIQUE     # Unique email address of the contact person
+
+campaign
+-
+  cf_id            SERIAL PK              # Unique campaign ID 
+  contact_id       INT FK >- contacts.contact_id  # Links to the Contacts table
+  company_name     VARCHAR(255)           # Name of the company running the campaign
+  description      TEXT                    # Description of the campaign
+  goal            DECIMAL(10,2)           # Fundraising goal (stored as decimal)
+  pledged         DECIMAL(10,2)           # Amount pledged by backers (stored as decimal)
+  outcome         VARCHAR(50)             # Outcome of the campaign (e.g., "successful", "failed")
+  backers_count   INT                     # Number of backers supporting the campaign
+  country         VARCHAR(50)             # Country where the campaign was launched
+  currency        VARCHAR(10)             # Currency used for fundraising
+  launched_date   DATE                    # Date when the campaign was launched
+  end_date        DATE                    # Date when the campaign ended
+  category_id     VARCHAR(10) FK >- category.category_id  # Links to the Category table
+  subcategory_id  VARCHAR(10) FK >- subcategory.subcategory_id  # Links to the Subcategory table
