@@ -10,19 +10,19 @@ subcategory
 
 contacts
 -
-  contact_id       SERIAL PK              # Unique contact ID 
+  contact_id       INT PK              # Unique contact ID 
   first_name       VARCHAR(100)           # First name of the contact person
   last_name        VARCHAR(100)           # Last name of the contact person
   email           VARCHAR(255) UNIQUE     # Unique email address of the contact person
 
 campaign
 -
-  cf_id            SERIAL PK              # Unique campaign ID 
+  cf_id            INT PK               # Unique campaign ID 
   contact_id       INT FK >- contacts.contact_id  # Links to the Contacts table
   company_name     VARCHAR(255)           # Name of the company running the campaign
-  description      TEXT                    # Description of the campaign
-  goal            DECIMAL(10,2)           # Fundraising goal (stored as decimal)
-  pledged         DECIMAL(10,2)           # Amount pledged by backers (stored as decimal)
+  description      VARCHAR(MAX)          # Description of the campaign
+  goal            FLOAT                  # Fundraising goal 
+  pledged         FLOAT                  # Amount pledged by backers 
   outcome         VARCHAR(50)             # Outcome of the campaign (e.g., "successful", "failed")
   backers_count   INT                     # Number of backers supporting the campaign
   country         VARCHAR(50)             # Country where the campaign was launched
