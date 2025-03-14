@@ -30,7 +30,7 @@ CREATE TABLE contacts (
 -- Create the Campaign Table
 CREATE TABLE campaign (
     cf_id INT PRIMARY KEY,       -- Unique campaign ID 
-    contact_id INT,                 -- Foreign key linking to the Contacts table
+    contact_id INT,
     company_name VARCHAR(255),      -- Name of the company running the campaign
     description VARCHAR,               -- Description of the campaign
     goal FLOAT,             -- Fundraising goal 
@@ -41,7 +41,20 @@ CREATE TABLE campaign (
     currency VARCHAR(10),           -- Currency used for fundraising
     launch_date DATE,               -- Date when the campaign was launched
     end_date DATE,                  -- Date when the campaign ended
-    category_id VARCHAR(10),        -- Foreign key linking to the Category table
-    subcategory_id VARCHAR(10),     -- Foreign key linking to the Subcategory table,
+    category_id VARCHAR(10),
+    subcategory_id VARCHAR(10)
+    FOREIGN KEY (contact_id) REFERENCES contacts(contact_id),                 -- Foreign key linking to the Contacts table
+    FOREIGN KEY (category_id) REFERENCES category(category_id),        -- Foreign key linking to the Category table
+    FOREIGN KEY (subcategory_id) REFERENCES subcategory(subcategory_id),     -- Foreign key linking to the Subcategory table,
     
 );
+
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_contact_id" FOREIGN KEY ("contact_id") REFERENCES "contacts" ("contact_id")
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_category_id" FOREIGN KEY ("category_id") REFERENCES "contacts" ("category_id")
+ALTER TABLE "campaign" ADD CONSTRAINT "fk_campaign_subcategory_id" FOREIGN KEY ("subcategory_id") REFERENCES "contacts" ("subcategory_id")
+
+
+SELECT * FROM category
+SELECT * FROM subcategory
+SELECT * FROM contacts
+SELECT * FROM campaign
